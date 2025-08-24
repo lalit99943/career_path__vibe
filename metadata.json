@@ -1,0 +1,5 @@
+{
+  "name": "Career Path Navigator",
+  "description": "An interactive application to explore and visualize different career paths in technology, including frontend, backend, UI/UX, and data science.",
+  "requestFramePermissions": []
+}
