@@ -22,8 +22,8 @@ const getTagColor = (tag: ToolTag): string => {
 };
 
 const ToolCard: React.FC<{ tool: Tool }> = ({ tool }) => (
-    <div className="bg-gray-700/50 p-4 rounded-md border border-gray-600/50">
-        <div className="flex justify-between items-start mb-2">
+    <div className="relative group bg-gray-700/50 p-4 rounded-md border border-gray-600/50">
+        <div className="flex justify-between items-start">
             <h5 className="font-semibold text-gray-200">{tool.name}</h5>
             <div className="flex space-x-2 flex-shrink-0 ml-2">
                 {tool.tags.map(tag => (
@@ -33,7 +33,15 @@ const ToolCard: React.FC<{ tool: Tool }> = ({ tool }) => (
                 ))}
             </div>
         </div>
-        <p className="text-gray-400 text-xs">{tool.description}</p>
+        {/* Tooltip for description */}
+        <div
+          role="tooltip"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs p-3 text-sm text-gray-200 bg-gray-800 border border-gray-600 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 z-10 pointer-events-none"
+        >
+            {tool.description}
+            {/* Tooltip arrow */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-gray-800"></div>
+        </div>
     </div>
 );
 

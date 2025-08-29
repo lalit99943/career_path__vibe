@@ -25,41 +25,26 @@ export const backendDeveloper: CareerPath = {
       },
       { 
         id: 'be2', 
-        title: 'Databases', 
-        description: 'Learn to store, retrieve, and manage application data using both relational (SQL) and non-relational (NoSQL) databases.',
+        title: 'Databases & APIs', 
+        description: 'Learn to interact with databases and build web services.',
         categories: [
           {
-            name: 'SQL Databases',
+            name: 'Databases',
             tools: [
-              { name: 'PostgreSQL', description: 'A powerful, open source object-relational database system.', tags: ['Open Source'] },
-              { name: 'MySQL', description: 'The world\'s most popular open source database.', tags: ['Open Source'] },
+              { name: 'PostgreSQL', description: 'A popular open-source relational database.', tags: ['Open Source'] },
+              { name: 'JPA/Hibernate', description: 'Standard API for object-relational mapping.', tags: ['Open Source'] },
             ]
           },
           {
-            name: 'NoSQL Databases',
+            name: 'APIs',
             tools: [
-              { name: 'MongoDB', description: 'A document-oriented NoSQL database used for high volume data storage.', tags: ['Open Source', 'Cloud'] },
-              { name: 'Redis', description: 'An in-memory data structure store, used as a database, cache, and message broker.', tags: ['Open Source'] },
+               { name: 'REST', description: 'Architectural style for creating web services.', tags: ['Open Source'] },
             ]
           }
         ]
       },
       { 
         id: 'be3', 
-        title: 'API Design', 
-        description: 'Understand how to design, build, and document APIs that allow the frontend and other services to communicate with your backend.',
-        categories: [
-          {
-            name: 'API Paradigms',
-            tools: [
-              { name: 'REST', description: 'A standard architectural style for creating web services.', tags: ['Open Source'] },
-              { name: 'GraphQL', description: 'A query language for APIs that gives clients exactly the data they ask for.', tags: ['Open Source'] },
-            ]
-          }
-        ]
-      },
-      { 
-        id: 'be4', 
         title: 'Authentication & Security', 
         description: 'Implement user authentication and learn best practices for securing your application against common vulnerabilities.',
         categories: [
@@ -73,7 +58,7 @@ export const backendDeveloper: CareerPath = {
         ]
       },
       {
-        id: 'be5',
+        id: 'be4',
         title: 'Testing',
         description: 'Learn to write unit, integration, and end-to-end tests to ensure the reliability and correctness of your server-side logic.',
         categories: [
@@ -88,7 +73,7 @@ export const backendDeveloper: CareerPath = {
         ]
       },
       { 
-        id: 'be6', 
+        id: 'be5', 
         title: 'Deployment & DevOps', 
         description: 'Learn how to containerize your application with Docker and deploy it to cloud services. Understand CI/CD pipelines for automation.',
         categories: [

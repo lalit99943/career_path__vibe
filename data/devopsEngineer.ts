@@ -28,7 +28,7 @@ export const devopsEngineer: CareerPath = {
       {
         id: 'do3',
         title: 'Infrastructure as Code (IaC)',
-        description: 'Manage and provision infrastructure through code.',
+        description: 'Manage and provision infrastructure through code, ensuring consistency, repeatability, and version control for your environments.',
         categories: [
           { name: 'Provisioning', tools: [{ name: 'Terraform', description: 'Provision and manage infrastructure on any cloud.', tags: ['Open Source'] }] },
           { name: 'Configuration Management', tools: [{ name: 'Ansible', description: 'Automate configuration, and application deployment.', tags: ['Open Source'] }] }

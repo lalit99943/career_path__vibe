@@ -8,29 +8,38 @@ import Tabs from './components/Tabs';
 import WorkflowDiagram from './components/WorkflowDiagram';
 import ComparisonTable from './components/ComparisonTable';
 import AdvancementDiagram from './components/AdvancementDiagram';
+import CareerSelectionGrid from './components/CareerSelectionGrid';
+
+type ActiveTab = 'careers' | 'roadmap' | 'workflow' | 'comparison' | 'advancement';
 
 const App: React.FC = () => {
-  // Set the first career as the default selected one
   const [selectedCareer, setSelectedCareer] = useState<CareerPath>(CAREER_PATHS[0]);
-  const [activeTab, setActiveTab] = useState<'roadmap' | 'workflow' | 'comparison' | 'advancement'>('roadmap');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('careers');
   const mainContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Scroll to top when the career path changes
+    // Scroll to top when the career path or main view changes
     if (mainContentRef.current) {
       mainContentRef.current.scrollTo(0, 0);
     }
-  }, [selectedCareer]);
+  }, [selectedCareer, activeTab]);
 
   const handleSelectCareer = (careerId: string) => {
     const career = CAREER_PATHS.find(p => p.id === careerId);
     if (career) {
+      const isNavigatingFromGrid = activeTab === 'careers';
       setSelectedCareer(career);
-      // Tab selection is now persisted across career path changes
+      
+      // If user selects a career from the grid, switch to the roadmap view for a better UX.
+      // Otherwise, persist the tab when switching via sidebar or comparison table.
+      if (isNavigatingFromGrid) {
+        setActiveTab('roadmap');
+      }
     }
   };
   
   const TABS = [
+    { id: 'careers', label: 'All Careers' },
     { id: 'roadmap', label: 'Learning Roadmap' },
     { id: 'workflow', label: 'Development Workflow' },
     { id: 'comparison', label: 'Compare Careers' },
@@ -39,6 +48,8 @@ const App: React.FC = () => {
 
   const subHeading = () => {
     switch (activeTab) {
+        case 'careers':
+            return 'Explore various roles and find the one that excites you most.';
         case 'roadmap':
             return `A step-by-step guide to becoming a ${selectedCareer.title}.`;
         case 'workflow':
@@ -64,15 +75,16 @@ const App: React.FC = () => {
         <main className="flex-1 p-4 sm:p-6 md:p-8">
             <header className="mb-6">
               <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">
-                {selectedCareer.title}
+                {activeTab === 'careers' ? 'Choose Your Path' : selectedCareer.title}
               </h1>
               <p className="text-lg text-gray-400 mt-2">
                 {subHeading()}
               </p>
             </header>
 
-            <Tabs tabs={TABS} activeTab={activeTab} onTabChange={(id) => setActiveTab(id as 'roadmap' | 'workflow' | 'comparison' | 'advancement')} />
+            <Tabs tabs={TABS} activeTab={activeTab} onTabChange={(id) => setActiveTab(id as ActiveTab)} />
             
+            {activeTab === 'careers' && <CareerSelectionGrid careers={CAREER_PATHS} onSelectCareer={handleSelectCareer} currentCareer={selectedCareer} />}
             {activeTab === 'roadmap' && <RoadmapDiagram roadmap={selectedCareer.roadmap} />}
             {activeTab === 'workflow' && <WorkflowDiagram workflow={selectedCareer.workflow} roadmap={selectedCareer.roadmap} />}
             {activeTab === 'comparison' && <ComparisonTable career={selectedCareer} allCareers={CAREER_PATHS} onSelectCareer={handleSelectCareer} />}

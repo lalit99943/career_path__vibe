@@ -1,4 +1,3 @@
-
 import type { CareerPath } from '../types';
 import { CoffeeIcon } from '../constants';
 
@@ -23,7 +22,7 @@ export const javaDeveloper: CareerPath = {
         description: 'Learn the Spring Framework, the dominant ecosystem for building modern Java applications.',
         categories: [
           { name: 'Core Framework', tools: [{ name: 'Spring Boot', description: 'Simplifies the creation of stand-alone, production-grade Spring applications.', tags: ['Open Source'] }] },
-          { name: 'Modules', tools: [{ name: 'Spring MVC', description: 'For building web applications and REST APIs.', tags: ['Open Source'] }, { name: 'Spring Data', description: 'Simplifies data access from relational and NoSQL databases.', tags: ['Open Source'] }] }
+          { name: 'Modules', tools: [{ name: 'Spring MVC', description: 'A key module of the Spring Framework for building web applications and RESTful APIs, following the Model-View-Controller design pattern.', tags: ['Open Source'] }, { name: 'Spring Data', description: 'A high-level Spring project that radically simplifies data access from relational and NoSQL databases, reducing boilerplate code.', tags: ['Open Source'] }] }
         ]
       },
       {
@@ -40,7 +39,7 @@ export const javaDeveloper: CareerPath = {
         title: 'Testing',
         description: 'Write unit and integration tests to ensure code quality and reliability.',
         categories: [
-          { name: 'Testing Libraries', tools: [{ name: 'JUnit 5', description: 'The standard framework for unit testing in Java.', tags: ['Open Source'] }, { name: 'Mockito', description: 'A mocking framework for creating test doubles.', tags: ['Open Source'] }] }
+          { name: 'Testing Libraries', tools: [{ name: 'JUnit 5', description: 'The standard, modern framework for writing and running repeatable unit tests in Java applications.', tags: ['Open Source'] }, { name: 'Mockito', description: 'A popular mocking framework used to create test doubles (mocks, stubs) for isolating and testing components in unit tests.', tags: ['Open Source'] }] }
         ]
       },
       {
